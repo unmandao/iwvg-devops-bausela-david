@@ -3,15 +3,12 @@ package es.upm.miw.iwvg_devops.code;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class UserTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class UserTest {
     private User user;
 
     @BeforeEach
@@ -60,5 +57,32 @@ public class UserTest {
     void testToStringWithEmptyFractionsList() {
         String expected = "User{id='1', name='Pedro', familyName='Santos', fractions=[]}";
         assertEquals(expected, user.toString());
+    }
+
+    @Test
+    void testGetId() {
+        assertEquals("1", user.getId());
+    }
+
+    @Test
+    void testGetName() {
+        assertEquals("Pedro", user.getName());
+    }
+
+    @Test
+    void testGetFamilyName() {
+        assertEquals("Santos", user.getFamilyName());
+    }
+
+    @Test
+    void testSetName() {
+        user.setName("Juan");
+        assertEquals("Juan", user.getName());
+    }
+
+    @Test
+    void testSetFamilyName() {
+        user.setFamilyName("Alcaraz");
+        assertEquals("Alcaraz", user.getFamilyName());
     }
 }
