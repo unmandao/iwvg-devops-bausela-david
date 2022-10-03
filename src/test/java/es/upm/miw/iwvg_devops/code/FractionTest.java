@@ -118,7 +118,7 @@ class FractionTest {
 
     @ParameterizedTest
     @MethodSource("provideParameters")
-    public void testIsEquivalentParametersFromMethod(Fraction f1, Fraction f2) {
+    void testIsEquivalentParametersFromMethod(Fraction f1, Fraction f2) {
         assertFalse(f1.isEquivalent(f2));
     }
 
