@@ -1,6 +1,11 @@
 package es.upm.miw.iwvg_devops.code;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -111,28 +116,19 @@ class FractionTest {
         assertTrue(f1.isEquivalent(f2));
     }
 
-
-    @Test
-    void testIsEquivalentWithTwoNonEquivalentFractions() {
-        Fraction f1 = new Fraction(3, 2);
-        Fraction f2 = new Fraction(4, 8);
+    @ParameterizedTest
+    @MethodSource("provideParameters")
+    public void testIsEquivalentParametersFromMethod(Fraction f1, Fraction f2) {
         assertFalse(f1.isEquivalent(f2));
     }
 
-    @Test
-    void testIsEquivalentWithFirstInvalidFraction() {
-        Fraction f1 = new Fraction(3, 0);
-        Fraction f2 = new Fraction(4, 8);
-        assertFalse(f1.isEquivalent(f2));
+    private static Stream<Arguments> provideParameters() {
+        return Stream.of(
+                Arguments.of(new Fraction(3, 2), new Fraction(4, 8)),
+                Arguments.of(new Fraction(3, 0), new Fraction(4, 8)),
+                Arguments.of(new Fraction(3, 5), new Fraction(4, 0))
+        );
     }
-
-    @Test
-    void testIsEquivalentWithSecondInvalidFraction() {
-        Fraction f1 = new Fraction(3, 5);
-        Fraction f2 = new Fraction(4, 0);
-        assertFalse(f1.isEquivalent(f2));
-    }
-
 
     @Test
     void testIsEquivalentWithNullFraction() {
