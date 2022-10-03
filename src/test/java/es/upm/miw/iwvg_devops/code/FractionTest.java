@@ -120,10 +120,24 @@ class FractionTest {
     }
 
     @Test
-    void testIsEquivalentWithInvalidFraction() {
+    void testIsEquivalentWithFirstInvalidFraction() {
         Fraction f1 = new Fraction(3, 0);
         Fraction f2 = new Fraction(4, 8);
         assertFalse(f1.isEquivalent(f2));
+    }
+
+    @Test
+    void testIsEquivalentWithSecondInvalidFraction() {
+        Fraction f1 = new Fraction(3, 5);
+        Fraction f2 = new Fraction(4, 0);
+        assertFalse(f1.isEquivalent(f2));
+    }
+
+
+    @Test
+    void testIsEquivalentWithNullFraction() {
+        Fraction f1 = new Fraction(3, 5);
+        assertFalse(f1.isEquivalent(null));
     }
 
     @Test
@@ -184,5 +198,19 @@ class FractionTest {
         Fraction fraction = new Fraction(3, 5);
         String expected = "Fraction{numerator=3, denominator=5}";
         assertEquals(expected, fraction.toString());
+    }
+
+    @Test
+    void testSetNumerator() {
+        Fraction fraction = new Fraction();
+        fraction.setNumerator(5);
+        assertEquals(5, fraction.getNumerator());
+    }
+
+    @Test
+    void testSetDenominator() {
+        Fraction fraction = new Fraction();
+        fraction.setDenominator(5);
+        assertEquals(5, fraction.getDenominator());
     }
 }
