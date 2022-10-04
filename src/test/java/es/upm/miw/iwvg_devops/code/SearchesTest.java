@@ -7,11 +7,17 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SearchesTest {
+class SearchesTest {
 
     @Test
     void testFindDecimalFractionByUserName() {
         assertEquals(List.of(1.0, 1.0, Double.NaN, Double.NaN, 1.0),
                 new Searches().findDecimalFractionByUserName("Paula").collect(Collectors.toList()));
+    }
+
+    @Test
+    void testFindUserFamilyNameBySomeImproperFraction() {
+        assertEquals(List.of("Blanco", "López"),
+                new Searches().findUserFamilyNameBySomeImproperFraction().collect(Collectors.toList()));
     }
 }
