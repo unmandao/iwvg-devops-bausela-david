@@ -25,4 +25,11 @@ public class Searches {
                 .map(User::getFamilyName)
                 .distinct();
     }
+
+    public Stream<Double> findDecimalFractionByNegativeSignFraction() {
+        return new UsersDatabase().findAll()
+                .flatMap(user -> user.getFractions().stream())
+                .filter(f -> f.getNumerator() * f.getDenominator() < 0)
+                .map(Fraction::decimal);
+    }
 }
