@@ -23,7 +23,7 @@ class SearchesTest {
 
     @Test
     void testFindUserFamilyNameByAllNegativeSignFractionDistinct() {
-        assertEquals(List.of("Blanco", "López"),
+        assertEquals(List.of(),
                 new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct().collect(Collectors.toList()));
     }
 
