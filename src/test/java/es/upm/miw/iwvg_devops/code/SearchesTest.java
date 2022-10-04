@@ -20,4 +20,10 @@ class SearchesTest {
         assertEquals(List.of("Blanco", "López"),
                 new Searches().findUserFamilyNameBySomeImproperFraction().collect(Collectors.toList()));
     }
+
+    @Test
+    void testFindUserFamilyNameByAllNegativeSignFractionDistinct() {
+        assertEquals(List.of("Blanco", "López"),
+                new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct().collect(Collectors.toList()));
+    }
 }
